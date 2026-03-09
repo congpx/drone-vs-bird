@@ -122,9 +122,7 @@ The best-performing variant in our experiments is a Random Forest post-processin
 **C. Post-processing experiments**
 
 - rule-based shape filters
-
 - learned keep/reject geometric filters
-
 - bird-specific learned filters
 
 **D. Evaluate**
@@ -138,28 +136,21 @@ Metrics include:
 
 ## Main Scripts
 Data preparation
-
 - scripts/00_prepare_data.ps1
 
 Baseline training
-
 - scripts/10_train_baseline_det.ps1
-
 - scripts/11_train_baseline_seg.ps1
 
 Full baseline pipeline
-
 - scripts/run_baselines.ps1
 
 Rule-based and learned filters
-
-scripts/20_eval_proposed_false_alarm_filter.ps1
-
-scripts/21_eval_proposed_false_alarm_filter_v2.ps1
+- scripts/20_eval_proposed_false_alarm_filter.ps1
+- scripts/21_eval_proposed_false_alarm_filter_v2.ps1
 
 Bird-specific valid-to-test pipeline
-
-scripts/22_run_bird_fp_valid_to_test.ps1
+- scripts/22_run_bird_fp_valid_to_test.ps1
 
 ## Main Python Tools
 - Dataset conversion
@@ -179,19 +170,25 @@ scripts/22_run_bird_fp_valid_to_test.ps1
 
 ## Example Commands
 Train segmentation baseline
+```
 powershell -ExecutionPolicy Bypass -File D:\chim\scripts\11_train_baseline_seg.ps1 -Epochs 40 -Batch 12 -Workers 4 -Imgsz 640 -RunName baseline_seg_rgb
+```
 Evaluate bird-specific Random Forest filter
-python D:\chim\tools\eval_false_alarm_shape_filter_bird_ml.py `
-  --model "D:\chim\runs\baseline_seg_rgb\weights\best.pt" `
-  --classifier "D:\chim\runs\bird_fp_ml\bird_fp_filter_rf.joblib" `
-  --data "D:\chim\data\dronebird_seg_clean_v2\data.yaml" `
+
+```
+python tools\eval_false_alarm_shape_filter_bird_ml.py `
+  --model "runs\baseline_seg_rgb\weights\best.pt" `
+  --classifier "runs\bird_fp_ml\bird_fp_filter_rf.joblib" `
+  --data "data\dronebird_seg_clean_v2\data.yaml" `
   --split test `
-  --outdir "D:\chim\runs\bird_fp_ml_eval_rf" `
+  --outdir "runs\bird_fp_ml_eval_rf" `
   --imgsz 640 `
   --conf 0.25 `
   --iou-nms 0.5 `
   --iou-match 0.5 `
   --device 0
+```
+
 ## Representative Results
 
 The YOLO11n-seg baseline achieves strong drone detection performance for a lightweight model. In our exploratory experiments, the best bird-specific Random Forest filter substantially reduced bird-induced false drone alarms while improving drone precision and overall F1-score relative to the raw segmentation baseline.
@@ -213,15 +210,14 @@ Recommended environment:
 - scikit-learn
 - joblib
 
-Install Dependencies
-- pip install ultralytics opencv-python pandas scikit-learn joblib
-Notes
+**Install Dependencies**
+```
+ pip install ultralytics opencv-python pandas scikit-learn joblib
+```
+**Notes**
 
-Datasets, model weights, and training outputs are typically not included in the repository.
-
-Please prepare the required dataset folders manually before running the scripts.
-
-Some scripts assume Windows PowerShell paths and local folder organization.
+Datasets, model weights, and training outputs are typically not included in the repository. Please prepare the required dataset folders manually before running the scripts.
+Some scripts assume Windows PowerShell paths and local folder organization. 
 
 ## Citation
 
@@ -230,6 +226,7 @@ If you use this repository in your research, please cite the corresponding paper
 ## Contact
 
 Maintained by congpx.
+
 
 
 
