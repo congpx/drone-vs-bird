@@ -92,7 +92,7 @@ This project follows that setting. The main idea is:
 └── README.md
 
 
-**Key folders**
+## Key folders
 
 data/: datasets and processed label splits
 
@@ -102,7 +102,7 @@ scripts/: PowerShell scripts for training and evaluation
 
 runs/: model outputs, checkpoints, metrics, and intermediate results
 
-Datasets
+## Datasets
 
 This project uses public drone-versus-bird datasets, especially the YOLO-based segmented drone-vs-bird dataset, which provides manually annotated segmentation masks for drones and birds.
 
@@ -116,7 +116,7 @@ polygon-style segmentation labels
 
 Therefore, preprocessing is required before training.
 
-Data Preprocessing
+## Data Preprocessing
 
 Two processed datasets are created:
 
@@ -153,7 +153,7 @@ YOLO11n-seg
 
 Instance segmentation baseline used as the main backbone of the proposed method.
 
-Proposed Method
+## Proposed Method
 
 The proposed pipeline consists of two stages:
 
@@ -173,7 +173,7 @@ For each predicted drone instance, the pipeline extracts mask-derived geometric 
 
 The best-performing variant in our experiments is a Random Forest post-processing filter trained to identify bird-induced false drone alarms.
 
-**Experimental Pipeline**
+## Experimental Pipeline
 **A. Prepare data**
 
 convert raw mixed-format labels
@@ -324,3 +324,4 @@ If you use this repository in your research, please cite the corresponding paper
 **Contact**
 
 Maintained by congpx.
+
