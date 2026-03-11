@@ -1,1 +1,2 @@
-
+baseline_seg_rgb/weights/best.pt --> YOLO11n-seg baseline checkpoint
+bird_fp_filter_rf.joblib: bird-specific Random Forest filter
