@@ -1,0 +1,64 @@
+{
+  "model_type": "rf",
+  "features": [
+    "conf",
+    "area",
+    "aspect_ratio",
+    "extent",
+    "solidity",
+    "circularity",
+    "compactness",
+    "rectangularity",
+    "eccentricity",
+    "vertex_count",
+    "bbox_w",
+    "bbox_h"
+  ],
+  "samples_total": 827,
+  "positive_bird_fp": 86,
+  "negative_true_drone": 741,
+  "train_size": 620,
+  "val_size": 207,
+  "bird_fp_binary_metrics": {
+    "precision": 0.7391304347826086,
+    "recall": 0.7727272727272727,
+    "f1": 0.7555555555555555
+  },
+  "confusion_matrix": [
+    [
+      179,
+      6
+    ],
+    [
+      5,
+      17
+    ]
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.9728260869565217,
+      "recall": 0.9675675675675676,
+      "f1-score": 0.9701897018970189,
+      "support": 185.0
+    },
+    "1": {
+      "precision": 0.7391304347826086,
+      "recall": 0.7727272727272727,
+      "f1-score": 0.7555555555555555,
+      "support": 22.0
+    },
+    "accuracy": 0.9468599033816425,
+    "macro avg": {
+      "precision": 0.8559782608695652,
+      "recall": 0.8701474201474202,
+      "f1-score": 0.8628726287262872,
+      "support": 207.0
+    },
+    "weighted avg": {
+      "precision": 0.9479888678848982,
+      "recall": 0.9468599033816425,
+      "f1-score": 0.947378343348651,
+      "support": 207.0
+    }
+  }
+}
